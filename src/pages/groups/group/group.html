@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'GROUP' | translate }}</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="device($event, item)">
+      {{item.hostname}}
+      <p>
+        {{item.hardware}}
+      </p>
+    </button>
+  </ion-list>
+</ion-content>

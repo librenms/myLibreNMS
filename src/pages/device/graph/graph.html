@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ graph.desc }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <graph-image label="{{ 'TIMEFRAME.DAY' | translate}}" [image]="page.day_graph.url" [loading]="page.day_graph.loading"></graph-image>
+  <graph-image label="{{ 'TIMEFRAME.WEEK' | translate}}" [image]="page.day_graph.url" [loading]="page.day_graph.loading"></graph-image>
+  <graph-image label="{{ 'TIMEFRAME.MONTH' | translate}}" [image]="page.day_graph.url" [loading]="page.day_graph.loading"></graph-image>
+  <graph-image label="{{ 'TIMEFRAME.YEAR' | translate}}" [image]="page.day_graph.url" [loading]="page.day_graph.loading"></graph-image>
+
+</ion-content>

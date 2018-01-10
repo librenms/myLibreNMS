@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'BILLS' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button *ngFor="let bill of bills" ion-item (click)="load_bill(bill)">{{bill.bill_name}} </button>
+  </ion-list>
+</ion-content>

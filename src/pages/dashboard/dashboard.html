@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{url}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-50>
+        {{ 'STATUS.SUMMARY' | translate }}
+      </ion-col>
+      <ion-col width-50>
+        {{ 'DEVICES' | translate }}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-50>
+        <h4 class="good">{{ 'STATUS.GOOD' | translate }}:</h4>
+      </ion-col>
+      <ion-col width-50>
+        <h4 class="good">{{ good_count }}</h4>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-50>
+        <h4 class="bad">{{ 'STATUS.DOWN' | translate }}:</h4>
+      </ion-col>
+      <ion-col width-50>
+        <h4 class="bad">{{ bad.length}}</h4>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-50>
+        <h4 class="dis">{{ 'STATUS.IGNORED' | translate }}:</h4>
+      </ion-col>
+      <ion-col width-50>
+        <h4 class="dis">{{ ignore}}</h4>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-50>
+        <h4 class="dis">{{ 'STATUS.DISABLED' | translate }}:</h4>
+      </ion-col>
+      <ion-col width-50>
+        <h4 class="dis">{{ disabled_count}}</h4>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-50>
+        <h4 class="total">{{ 'STATUS.TOTAL' | translate }}:</h4>
+      </ion-col>
+      <ion-col width-50>
+        <h4 class="total">{{ disabled_count + bad.length + good_count + ignore }}</h4>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <ion-list-header>
+      {{ 'STATUS.DEVICES' | translate }} :
+    </ion-list-header>
+    <ion-item *ngFor="let host of bad" (click)="device($event, host)">
+      <ion-icon name="alert" item-left class="icon-bad"></ion-icon>
+      {{ host.hostname }}
+    </ion-item>
+  </ion-list>
+
+</ion-content>

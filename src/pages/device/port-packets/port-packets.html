@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Packet Types</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngFor="let type of types" (click)="load_graph($event, type)">
+    {{ type.desc }}
+  </ion-item>
+</ion-content>

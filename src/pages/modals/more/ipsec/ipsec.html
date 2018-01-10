@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      IPSec Sessions
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">
+        <span ion-text="primary">Cancel</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of data">
+    <ion-list>
+      <ion-item *ngIf="item.tunnel_id !== NULL">ID: {{ item.tunnel_id }}</ion-item>
+      <ion-item *ngIf="item.peer_port !== NULL">Peer Port: {{ item.peer_port }} </ion-item>
+      <ion-item *ngIf="item.peer_addr !== NULL">Peer Addr: {{ item.peer_addr }} </ion-item>
+      <ion-item *ngIf="item.local_addr !== NULL">Local Addr: {{ item.local_addr }} </ion-item>
+      <ion-item *ngIf="item.local_port !== NULL">Local Port: {{ item.local_port }}</ion-item>
+      <ion-item *ngIf="item.tunnel_name !== NULL">Tunnel Name: {{ item.tunnel_name }} </ion-item>
+      <ion-item *ngIf="item.tunnel_status !== NULL">Tunnel Status: {{ item.tunnel_status }}</ion-item>
+    </ion-list>
+  </ion-card>
+
+</ion-content>

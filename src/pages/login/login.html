@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="openModal(0)">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>LibreNMS</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of items">
+      <button ion-item (click)="login(item)">
+        <ion-icon name="arrow-dropright" item-right></ion-icon>
+        {{item.name}}
+      </button>
+      <ion-item-options side="right">
+        <button ion-button color="dark" (click)="openModal(1,item)">
+          <ion-icon name="ios-more"></ion-icon>
+          {{ 'GENERIC.EDIT' | translate }}
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-grid *ngIf="items.length < 1">
+    <ion-row center>
+      <ion-col>
+        <h3 no-padding no-margin class="light-text">Press + to add a new server</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

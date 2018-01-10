@@ -1,0 +1,39 @@
+<ion-content>
+  <ion-card *ngIf="device">
+    <ion-item>
+      <h2>{{device.sysName}}</h2>
+      <p>{{device.hardware}}</p>
+    </ion-item>
+    <graph-image [loading]="loading" [label]="''" [image]="traffic_graph"></graph-image>
+
+    <ion-card-content>
+      <p>
+        {{ device.sysDesc }}
+      </p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <div>{{device.os}}</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button *ngIf="device.ip != null" ion-button icon-left clear small (click)="launch(device.ip)">
+          <div>{{device?.ip}}</div>
+        </button>
+        <button *ngIf="device.ip == null" ion-button icon-left clear small (click)="launch(device.hostname)">
+          <div>{{device.hostname}}</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-card *ngIf="device">
+    <ion-card-header>
+      {{ "DEVICE.NOTES" | translate }}
+    </ion-card-header>
+
+    <ion-card-content>
+      {{device.notes}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

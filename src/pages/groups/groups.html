@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'GROUPS' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let group of groups" (click)="load_group($event, group)">
+      {{group.name}}
+    </button>
+  </ion-list>
+</ion-content>

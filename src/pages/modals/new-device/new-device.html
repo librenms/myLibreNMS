@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{'MODAL.DEVICE.NEW' | translate}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text="primary">{{'GENERIC.CANCEL' | translate }}</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="save()">
+    <ion-item>
+      <ion-label stacked>{{'SNMP.HOSTNAME' | translate}}</ion-label>
+      <ion-input [(ngModel)]="server.hostname" type="text" name="hostname" placeholder="Hostname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>SNMP {{'SNMP.VERSION' | translate}}</ion-label>
+      <ion-select [(ngModel)]="server.version" name="version" (ionChange)=inputs()>
+        <ion-option value="v1">v1</ion-option>
+        <ion-option value="v2c">v2c</ion-option>
+        <ion-option value="v3">v3</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked> {{'SNMP.PORT' | translate}}</ion-label>
+      <ion-input [(ngModel)]="server.port" type="text" placeholder="161" name="port"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>{{'SNMP.TRANSPORT' | translate}}</ion-label>
+      <ion-select [(ngModel)]="server.transport" name="transport">
+        <ion-option value="udp">udp</ion-option>
+        <ion-option value="udp6">udp6</ion-option>
+        <ion-option value="tcp">tcp</ion-option>
+        <ion-option value="tcp6">tcp6</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item [hidden]="more">
+      <ion-label stacked>{{'SNMP.COMMUNITY' | translate}}</ion-label>
+      <ion-input [(ngModel)]="server.community" type="text" placeholder="public" name="community"></ion-input>
+    </ion-item>
+    <ion-item [hidden]="!more">
+      <ion-label stacked>Auth Level</ion-label>
+      <ion-select [(ngModel)]="server.authLevel" name="authLevel">
+        <ion-option value="NoAuthNoPriv">NoAuthNoPriv</ion-option>
+        <ion-option value="AuthNoPriv">AuthNoPriv</ion-option>
+        <ion-option value="AuthPriv">AuthPriv</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item [hidden]="!more">
+      <ion-label stacked>Auth Username</ion-label>
+      <ion-input [(ngModel)]="server.authname" type="text" placeholder="Auth Username" name="authname"></ion-input>
+    </ion-item>
+    <ion-item [hidden]="!more">
+      <ion-label stacked>Auth Password</ion-label>
+      <ion-input [(ngModel)]="server.authpass" type="text" placeholder="Auth Password" name="authpass"></ion-input>
+    </ion-item>
+    <ion-item [hidden]="!more">
+      <ion-label stacked>Auth Algorithm</ion-label>
+      <ion-select [(ngModel)]="server.authalgo" name="authalgo">
+        <ion-option value="MD5">MD5</ion-option>
+        <ion-option value="SHA">SHA</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item [hidden]="!more">
+      <ion-label stacked>Crypto Password</ion-label>
+      <ion-input [(ngModel)]="server.cryptopass" type="text" placeholder="cryptopass" name="cryptopass"></ion-input>
+    </ion-item>
+    <ion-item [hidden]="!more">
+      <ion-label stacked>Crypto Algorithm</ion-label>
+      <ion-select [(ngModel)]="server.cryptoalgo" name="cryptoalgo">
+        <ion-option value="AES">AES</ion-option>
+        <ion-option value="DES">DES</ion-option>
+      </ion-select>
+    </ion-item>
+    <button ion-button full type="submit" [attr.disabled]="loading ? '' : null">Add</button>
+  </form>
+</ion-content>

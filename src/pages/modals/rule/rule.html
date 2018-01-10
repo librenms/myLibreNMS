@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{rule.hostname}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text="primary">{{ 'GENERIC.CANCEL' | translate }} </span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>{{ 'GENERIC.NAME' | translate }}: {{item?.name}}</ion-item>
+    <ion-item>{{ 'GENERIC.SEVERITY' | translate }}: {{item?.severity}}</ion-item>
+    <ion-item text-wrap>{{ 'GENERIC.RULE' | translate }}: {{item?.rule}}</ion-item>
+    <ion-item>{{ 'GENERIC.TIMESTAMP' | translate }}: {{rule.timestamp}}</ion-item>
+  </ion-list>
+</ion-content>

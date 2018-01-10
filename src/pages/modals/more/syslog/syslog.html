@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Syslog
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="dismiss()">
+                <span ion-text="primary">Cancel</span>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-segment [(ngModel)]="log_name" (ionChange)="tab_change($event)">
+        <ion-segment-button value="eventlog">
+            EventLog
+        </ion-segment-button>
+        <ion-segment-button value="syslog">
+            Syslog
+        </ion-segment-button>
+        <ion-segment-button value="authlog">
+            AuthLog
+        </ion-segment-button>
+    </ion-segment>
+</ion-header>
+
+<ion-content>
+    
+    
+    <div [ngSwitch]="log_name">
+        <ion-list  *ngSwitchCase="'eventlog'">
+            <ion-item *ngFor="let i of log">
+                <ion-icon [name]="getIcon(i.type)" item-start></ion-icon>
+                <h3 text-wrap>{{i.message}}</h3>
+                <p>{{i.datetime}}</p>
+            </ion-item>
+        </ion-list>
+
+        <ion-list  *ngSwitchCase="'syslog'">
+            <ion-item *ngFor="let i of log">
+                <ion-icon [name]="getIcon(i.level)" item-start></ion-icon>
+                <h2 text-wrap >{{i.program}}</h2>
+                <h3 text-wrap >{{i.msg}}</h3>
+                <p>{{i.timestamp}}</p>
+            </ion-item>
+        </ion-list>
+        
+        
+        <ion-list  *ngSwitchCase="'authlog'">
+            <ion-item *ngFor="let i of log">
+                <ion-icon [name]="getIcon(i.result)" item-start></ion-icon>
+                <h2>{{i.user}}</h2>
+                <h3 text-wrap>{{i.address}} - {{i.result}}</h3>
+                <p>{{i.datetime}}</p>
+            </ion-item>
+        </ion-list>
+        
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+            <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </div>
+    
+</ion-content>

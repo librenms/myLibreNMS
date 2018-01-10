@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ bill_data.bill_name }}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text="primary">Cancel</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>Used: {{ bill_data.used }}</ion-item>
+    <ion-item>Total In : {{ bill_data.total_data_in }}</ion-item>
+    <ion-item>Total Out: {{ bill_data.total_data_out }}</ion-item>
+    <ion-item>Total data: {{ bill_data.allowed }}</ion-item>
+    <ion-item>Bill Day: {{ bill_data.bill_day }}</ion-item>
+    <ion-item>Bill Last Calc: {{ bill_data.bill_last_calc }}</ion-item>
+
+  </ion-list>
+  <ion-card>
+    <ion-card-header>
+      Notes
+    </ion-card-header>
+    <ion-card-content>
+      {{ bill_data.bill_notes }}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

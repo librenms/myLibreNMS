@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'SETTINGS' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>URL</ion-label>
+      <ion-input type="text" [(ngModel)]="creds.url" name="url" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Token</ion-label>
+      <ion-input type="text" [(ngModel)]="creds.token" name="name" readonly></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button block (click)="logout()">{{ 'AUTH.LOGOUT' | translate }}</button>
+</ion-content>

@@ -1,0 +1,10 @@
+<!-- Generated template for the GraphImageComponent component -->
+<div>
+  <ion-label>{{label}}</ion-label>
+  <ion-item *ngIf="loading">
+    <ion-spinner></ion-spinner>
+  </ion-item>
+  <ion-item *ngIf="!loading">
+    <img [src]="image" imageViewer/>
+  </ion-item>
+</div>

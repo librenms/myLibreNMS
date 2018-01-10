@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Active VLAN
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">
+        <span ion-text="primary">Cancel</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of data">
+    <ion-list>
+      <ion-item *ngIf="item.vlan_vlan != null">VLAN: {{ item.vlan_vlan }}</ion-item>
+      <ion-item *ngIf="item.vlan_domain != null">VLAN Domain: {{ item.vlan_domain }} </ion-item>
+      <ion-item *ngIf="item.vlan_name != null">VLAN Name: {{ item.vlan_name }} </ion-item>
+      <ion-item *ngIf="item.vlan_type != null">VLAN Type: {{ item.vlan_type }} </ion-item>
+      <ion-item *ngIf="item.vlan_mtu != null">VLAN mtu: {{ item.vlan_mtu }} </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

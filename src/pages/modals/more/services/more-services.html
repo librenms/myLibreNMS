@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Services
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">
+        <span ion-text="primary">Cancel</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let item of data">
+    <button ion-item *ngFor="let service of item" (click)="load_service(service)">
+           <h2>{{service.service_type}}</h2>
+           <h3>
+               {{service.service_ip}}
+           </h3>
+          <p>
+            {{service.service_desc}}
+        </p>
+        </button>
+  </ion-list>
+</ion-content>

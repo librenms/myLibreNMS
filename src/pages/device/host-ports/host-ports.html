@@ -1,0 +1,9 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 *ngFor="let graph of graphs" (click)="load_graph($event, graph)">
+        <thumbnail [image]="graph.thumbnail" [label]="graph.ifName"></thumbnail>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

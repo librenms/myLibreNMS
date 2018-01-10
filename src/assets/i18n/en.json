@@ -1,0 +1,80 @@
+{
+  "MENU": "Menu",
+  "DASHBOARD": "Dashboard",
+  "DEVICES": "Devices",
+  "GROUPS": "Groups",
+  "GROUP": "Group",
+  "ALERTS": "Alerts",
+  "SERVICES": "Services",
+  "SETTINGS": "Settings",
+  "BILLS": "Bills",
+  "STATUS": {
+    "SUMMARY": "Summary",
+    "GOOD": "Good",
+    "BAD": "Bad",
+    "DOWN": "Down",
+    "IGNORED": "Ignored",
+    "DISABLED": "Disabled",
+    "DEVICES": "Down Devices",
+    "TOTAL": "Total"
+  },
+  "TIMEFRAME": {
+    "DAY": "24 Hours",
+    "WEEK": "Week",
+    "MONTH": "Month",
+    "YEAR": "Year"
+  },
+  "SNMP": {
+    "COMMUNITY": "Community",
+    "TRANSPORT": "Transport",
+    "PORT": "Port",
+    "VERSION": "Version",
+    "HOSTNAME": "Hostname"
+  },
+  "DEVICE": {
+    "TABS": {
+      "OVERVIEW": "Overview",
+      "HEALTH": "Health",
+      "GRAPHS": "Graphs",
+      "PORTS": "Ports",
+      "WIRELESS": "Wireless"
+    },
+    "NOTES": "Notes",
+    "MORE": "More"
+  },
+  "MODAL": {
+    "DEVICE": {
+      "NEW": "Add a New Device"
+    },
+    "SERVICE": {
+      "TYPE": "Type",
+      "DESC": "Desc",
+      "IGNORE": "Ignore",
+      "STATUS": "Status",
+      "CHANGED": "Changed",
+      "MESSAGE": "Message",
+      "DISABLED": "Disabled"
+    }
+  },
+  "AUTH": {
+    "LOGIN": "Login",
+    "LOGOUT": "Logout"
+  },
+  "SERVER": {
+    "ADD": "Add a new Server",
+    "EDIT": "Edit a Server",
+    "TOKEN": "API Token"
+  },
+
+  "GENERIC": {
+    "ADD": "Add",
+    "CANCEL": "Cancel",
+    "SAVE": "Save",
+    "REMOVE": "Remove",
+    "EDIT": "Edit",
+    "SEVERITY": "Severity",
+    "RULE": "Rule",
+    "TIMESTAMP": "Timestamp",
+    "NAME": "Name"
+  }
+}

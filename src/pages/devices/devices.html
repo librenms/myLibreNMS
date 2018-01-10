@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'DEVICES' | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="add()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="device($event, item)">
+      <ion-icon *ngIf="!item.getStatus().status" [name]="item.getStatus().icon" item-end [color]="item.getStatus().colour"></ion-icon>
+      <h2>{{item.hostname}}</h2>
+      <h3>{{item.sysName}}</h3>
+      <p>
+        {{item.hardware}}
+      </p>
+    </button>
+  </ion-list>
+</ion-content>

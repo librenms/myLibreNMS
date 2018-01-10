@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ 'SERVER.ADD' | translate }}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text="primary">{{ 'GENERIC.CANCEL' | translate }} </span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="newServer" (ngSubmit)="save()">
+
+    <ion-item>
+      <ion-label stacked>{{ 'GENERIC.NAME' | translate }}</ion-label>
+      <ion-input formControlName="name" type="text" placeholder="Primary Server"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>URL</ion-label>
+      <ion-input formControlName="url" type="text" placeholder="https://mylibrenms.server"></ion-input>
+    </ion-item>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col width-80>
+          <ion-item>
+            <ion-label stacked>{{ 'SERVER.TOKEN' | translate }}</ion-label>
+            <ion-input type="text" name="api" formControlName="api" [(ngModel)]="my_token"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col width-20 class="button-container">
+          <button (click)="scan()" type="button">
+            <ion-icon name="qr-scanner"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!--     <ion-item>
+        <ion-label>Basic Auth</ion-label>
+        <ion-checkbox formControlName="basic"></ion-checkbox>
+      </ion-item>
+
+      <ion-item *ngIf="newServer.value.basic">
+        <ion-label stacked>Name</ion-label>
+        <ion-input formControlName="user" type="text" placeholder="user"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="newServer.value.basic">
+        <ion-label stacked>Name</ion-label>
+        <ion-input formControlName="pass" type="text" placeholder="password"></ion-input>
+      </ion-item> -->
+
+
+    <button ion-button full type="submit" [disabled]="!newServer.valid">{{ 'GENERIC.SAVE' | translate }}</button>
+  </form>
+</ion-content>

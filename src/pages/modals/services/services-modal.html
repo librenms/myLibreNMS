@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Service
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">
+        <span ion-text="primary">{{'GENERIC.CANCEL' | translate }}</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <p>
+          {{device?.hostname}}</p>
+      </ion-item>
+      <ion-item *ngIf="data.service_ip != null || data.service_ip != ''">ip:
+        <p> {{data.service_ip}}</p>
+      </ion-item>
+
+      <ion-item *ngIf="data.service_type != null || data.service_type != ''">{{ 'MODAL.SERVICE.TYPE' | translate }}:
+        <p> {{data.service_type}}</p>
+      </ion-item>
+      <ion-item *ngIf="data.service_desc != null" text-wrap>Desc:
+        <p> {{data.service_desc}}</p>
+      </ion-item>
+      <ion-item *ngIf="data.service_param != null || data.service_param != ''">Param:
+        <p> {{data.service_param}}</p>
+      </ion-item>
+      <ion-item *ngIf="data.service_ignore != null || data.service_ignore != ''">{{ 'MODAL.SERVICE.IGNORE' | translate }}:
+        <p> {{data.service_ignore}}</p>
+      </ion-item>
+      <ion-item *ngIf="data.service_status != null">{{ 'MODAL.SERVICE.STATUS' | translate }}:
+        <p> {{data.service_status}}</p>
+      </ion-item>
+      <ion-item *ngIf="data.service_changed != null">{{ 'MODAL.SERVICE.CHANGED' | translate }}:
+        <p> {{data.service_changed}}</p>
+      </ion-item>
+      <ion-item *ngIf="data.service_message != null" text-wrap>{{ 'MODAL.SERVICE.MESSAGE' | translate }}:
+        <p> {{data.service_message}}</p>
+      </ion-item>
+      <ion-item *ngIf="data.service_disabled != null">{{ 'MODAL.SERVICE.DISABLED' | translate }}:
+        <p> {{data.service_disabled}}</p>
+      </ion-item>
+      <ion-item *ngIf="data.service_ds != null">Ds:
+        <p> {{data.service_ds}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{device?.hostname}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="statusPopover($event, device?.getStatus().state)">
+        <ion-icon [color]="device?.getStatus().colour" [name]="device?.getStatus().icon" item-end></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="presentPopover($event)" style="margin-left:10px;">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-tabs>
+    <ion-tab tabTitle="{{ 'DEVICE.TABS.OVERVIEW' | translate }}" tabIcon="list" [root]="tab1" [rootParams]="id"></ion-tab>
+    <ion-tab tabTitle="{{ 'DEVICE.TABS.HEALTH' | translate }}" tabIcon="heart" [root]="tab2" [rootParams]="id"></ion-tab>
+    <ion-tab tabTitle="{{ 'DEVICE.TABS.GRAPHS' | translate }}" tabIcon="pulse" [root]="tab3" [rootParams]="id"></ion-tab>
+    <ion-tab tabTitle="{{ 'DEVICE.TABS.PORTS' | translate }}" tabIcon="barcode" [root]="tab4" [rootParams]="id"></ion-tab>
+    <ion-tab *ngIf="hasWireless" tabTitle="{{ 'DEVICE.TABS.WIRELESS' | translate }}" tabIcon="wifi" [root]="tab5" [rootParams]="id"></ion-tab>
+  </ion-tabs>
+</ion-content>

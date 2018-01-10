@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Active Alerts</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let alert of alerts">
+      <button ion-item>
+        <h2>{{alert.hostname}}</h2>
+        <p>{{alert.timestamp}}</p>
+      </button>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="acknowledge($event,alert)">
+          Ack...
+        </button>
+        <button ion-button color="light" (click)="rule(alert)">
+          Rule
+        </button>
+        <button ion-button color="favorite" (click)="device($event,alert)">
+          View
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
