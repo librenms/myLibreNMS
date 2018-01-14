@@ -36,10 +36,10 @@ export class GraphHelper {
     series(hook: string, from: string = 'end-24h', to: string = 'now', width: number = window.innerHeight, height: number = 200) {
         this.current = 0;
         const graph_times = [
-            { "timeframe": "day_graph", "query": "end-24h" },
-            { "timeframe": "week_graph", "query": "end-1w" },
-            { "timeframe": "month_graph", "query": "end-1m" },
-            { "timeframe": "year_graph", "query": "end-1y" }
+            { "timeframe": "day_graph", "query": "-24h" },
+            { "timeframe": "week_graph", "query": "-1w" },
+            { "timeframe": "month_graph", "query": "-1m" },
+            { "timeframe": "year_graph", "query": "-1y" }
         ];
         return Observable.create(observer => {
             graph_times.forEach((timeframe) => {
