@@ -1,10 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
 import { LibreNMS } from '../providers/libre-nms';
 import { MenuController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
+import { StatusBar } from '@ionic-native/status-bar';
+import { Globalization } from '@ionic-native/globalization';
 
 @Component({
     templateUrl: 'app.html'
@@ -22,34 +23,44 @@ export class MyApp {
         private api: LibreNMS,
         private translate: TranslateService,
         public menuCtrl: MenuController,
-        private storage: Storage) {
-        this.initializeApp();
-        translate.setDefaultLang('en');
+        private storage: Storage,
+        private globalization: Globalization) {
+        
+            translate.setDefaultLang('en');
+            this.initializeApp();
 
-        this.pages = [
-            { title: 'DASHBOARD', component: 'Dashboard', icon: 'analytics' },
-            { title: 'DEVICES', component: 'Devices', icon: 'list-box' },
-            { title: 'GROUPS', component: 'Groups', icon: 'albums' },
-            { title: 'ALERTS', component: 'AlertsPage', icon: 'notifications' },
-            { title: 'SERVICES', component: 'ServicesPage', icon: 'logo-buffer' },
-            { title: 'BILLS', component: 'BillsPage', icon: 'paper' }
-        ];
-        this.settings = [{ title: "Settings", component: 'SettingsPage' }];
+            this.pages = [
+                { title: 'DASHBOARD', component: 'Dashboard', icon: 'analytics' },
+                { title: 'DEVICES', component: 'Devices', icon: 'list-box' },
+                { title: 'GROUPS', component: 'Groups', icon: 'albums' },
+                { title: 'ALERTS', component: 'AlertsPage', icon: 'notifications' },
+                { title: 'SERVICES', component: 'ServicesPage', icon: 'logo-buffer' },
+                { title: 'BILLS', component: 'BillsPage', icon: 'paper' }
+            ];
+            this.settings = [{ title: "Settings", component: 'SettingsPage' }];
     }
 
     initializeApp() {
         this.platform.ready().then(() => {
+            // Okay, so the platform is ready and our plugins are available.
+            // Here you can do any higher level native things you might need.
 
+            this.statusBar.styleDefault();
+
+            if(!this.platform.is('core')) {
+                this.globalization.getPreferredLanguage().then((response) => {
+                    let lang = response.value.split('-')[0];
+                    this.translate.use(lang);    
+                })
+            }
+
+            // Initialize Storage
             this.storage.get('servers').then((servers) => {
                 if (servers == null || servers == undefined) {
                     this.storage.set('servers', []);
                 }
             });
-
-            this.statusBar.styleDefault();
-            // Okay, so the platform is ready and our plugins are available.
-            // Here you can do any higher level native things you might need.
-
+            
             if (this.platform.is('android')) {
                 this.platform.registerBackButtonAction(() => {
                     if (this.nav.canGoBack()) {
