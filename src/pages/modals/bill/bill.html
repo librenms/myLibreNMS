@@ -5,7 +5,7 @@
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span ion-text="primary">Cancel</span>
+        <span ion-text="primary">{{ 'GENERIC.CANCEL' | translate }}</span>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -23,7 +23,7 @@
   </ion-list>
   <ion-card>
     <ion-card-header>
-      Notes
+      {{ 'NOTES' | translate }}
     </ion-card-header>
     <ion-card-content>
       {{ bill_data.bill_notes }}

@@ -65,7 +65,7 @@ export class Login {
             this.storage.set('_session', { 'url': item.url, 'token': item.token, 'version': '/api/v0' });
             this.navCtrl.setRoot('Dashboard');
         }, (error) => {
-            console.log(error.json());
+            console.log(JSON.stringify(error.json()));
             if (error.status == 0) {
                 this.presentToast('Unable to reach the server.');
             }
