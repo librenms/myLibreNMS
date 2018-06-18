@@ -32,7 +32,7 @@ export class Device {
     }
 
     isDown(): boolean {
-        return this.status == "0" && this.disabled !== "1";
+        return this.status == "0" && this.disabled !== "1" && this.ignore !== "1";
     }
 
     isGood(): boolean {
@@ -44,7 +44,7 @@ export class Device {
     }
 
     isIgnored(): boolean {
-        return this.ignore == "1";
+        return this.ignore == "1" && !this.isDisabled();
     }
 
     getStatus(): StatusInfo {
