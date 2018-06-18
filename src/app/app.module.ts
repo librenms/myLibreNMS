@@ -25,6 +25,7 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Globalization } from '@ionic-native/globalization';
 
 //Validators
 import { CustomValidation } from '../CustomValidators';
@@ -76,7 +77,8 @@ export function createTranslateLoader(http: HttpClient) {
         ScreenOrientation,
         StatusBar,        
         CustomValidation,
-        {provide: HttpBackend, useClass: NativeHttpFallback, deps: [Platform, NativeHttpBackend, HttpXhrBackend]}
+        {provide: HttpBackend, useClass: NativeHttpFallback, deps: [Platform, NativeHttpBackend, HttpXhrBackend]},
+        Globalization
     ]
 })
 

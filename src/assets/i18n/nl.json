@@ -1,0 +1,80 @@
+{
+  "MENU": "Menu",
+  "DASHBOARD": "Dashboard",
+  "DEVICES": "Apparaten",
+  "GROUPS": "Groepen",
+  "GROUP": "Groep",
+  "ALERTS": "Alarmen",
+  "SERVICES": "Diensten",
+  "SETTINGS": "Instellingen",
+  "BILLS": "Rekeningen",
+  "STATUS": {
+    "SUMMARY": "Samenvatting",
+    "GOOD": "Goed",
+    "BAD": "Slecht",
+    "DOWN": "Offline",
+    "IGNORED": "Genegeerd",
+    "DISABLED": "Uitgeschakeld",
+    "DEVICES": "Offline Apparaten",
+    "TOTAL": "Totaal"
+  },
+  "TIMEFRAME": {
+    "DAY": "24 uurs",
+    "WEEK": "Week",
+    "MONTH": "Maand",
+    "YEAR": "Jaar"
+  },
+  "SNMP": {
+    "COMMUNITY": "Community",
+    "TRANSPORT": "Transport",
+    "PORT": "Poort",
+    "VERSION": "Versie",
+    "HOSTNAME": "Hostnaam"
+  },
+  "DEVICE": {
+    "TABS": {
+      "OVERVIEW": "Overzicht",
+      "HEALTH": "Gezondheid",
+      "GRAPHS": "Grafieken",
+      "PORTS": "Poorten",
+      "WIRELESS": "Draadloos"
+    },
+    "NOTES": "Notities",
+    "MORE": "Meer"
+  },
+  "MODAL": {
+    "DEVICE": {
+      "NEW": "Voeg een apparaat toe"
+    },
+    "SERVICE": {
+      "TYPE": "Type",
+      "DESC": "Omschrijving",
+      "IGNORE": "Negeer",
+      "STATUS": "Status",
+      "CHANGED": "Veranderd",
+      "MESSAGE": "Bericht",
+      "DISABLED": "Uitgeschakeld"
+    }
+  },
+  "AUTH": {
+    "LOGIN": "Log in",
+    "LOGOUT": "Log uit"
+  },
+  "SERVER": {
+    "ADD": "Voeg een server toe",
+    "EDIT": "Pas een server aan",
+    "TOKEN": "API Token"
+  },
+
+  "GENERIC": {
+    "ADD": "Toevoegen",
+    "CANCEL": "Annuleer",
+    "SAVE": "Opslaan",
+    "REMOVE": "Verwijder",
+    "EDIT": "Aanpassen",
+    "SEVERITY": "Ernst",
+    "RULE": "Regel",
+    "TIMESTAMP": "Timestamp",
+    "NAME": "Naam"
+  }
+}

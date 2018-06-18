@@ -104,5 +104,9 @@
     <plugin name="phonegap-plugin-barcodescanner" spec="^6.0.8">
         <variable name="CAMERA_USAGE_DESCRIPTION" value="Scan QR-Codes" />
     </plugin>
+<<<<<<< HEAD
     <plugin name="cordova-plugin-advanced-http" spec="~1.11.1" />
+=======
+    <plugin name="cordova-plugin-globalization" spec="^1.11.0" />
+>>>>>>> 74b9487e7eb8e0ea24d1d5d10099fd9504445133
 </widget>
