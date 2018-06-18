@@ -1,0 +1,80 @@
+{
+  "MENU": "Menu",
+  "DASHBOARD": "Dashboard",
+  "DEVICES": "Geräte",
+  "GROUPS": "Gruppen",
+  "GROUP": "Gruppe",
+  "ALERTS": "Alarme",
+  "SERVICES": "Dienste",
+  "SETTINGS": "Einstellungen",
+  "BILLS": "Rechnungen",
+  "STATUS": {
+    "SUMMARY": "Zusammenfassung",
+    "GOOD": "Gut",
+    "BAD": "Schlecht",
+    "DOWN": "Ausfall",
+    "IGNORED": "Ignoriert",
+    "DISABLED": "Deaktiviert",
+    "DEVICES": "Ausgefallene Geräte",
+    "TOTAL": "Total"
+  },
+  "TIMEFRAME": {
+    "DAY": "24 Stunden",
+    "WEEK": "Woche",
+    "MONTH": "Monat",
+    "YEAR": "Jahr"
+  },
+  "SNMP": {
+    "COMMUNITY": "Community",
+    "TRANSPORT": "Transport",
+    "PORT": "Port",
+    "VERSION": "Version",
+    "HOSTNAME": "Hostname"
+  },
+  "DEVICE": {
+    "TABS": {
+      "OVERVIEW": "Übersicht",
+      "HEALTH": "Status",
+      "GRAPHS": "Graphen",
+      "PORTS": "Ports",
+      "WIRELESS": "Drahtlos"
+    },
+    "NOTES": "Notizen",
+    "MORE": "Mehr"
+  },
+  "MODAL": {
+    "DEVICE": {
+      "NEW": "Neues Gerät hinzufügen"
+    },
+    "SERVICE": {
+      "TYPE": "Typ",
+      "DESC": "Beschr.",
+      "IGNORE": "Ignorieren",
+      "STATUS": "Status",
+      "CHANGED": "Verändert",
+      "MESSAGE": "Nachricht",
+      "DISABLED": "Deaktiviert"
+    }
+  },
+  "AUTH": {
+    "LOGIN": "Anmelden",
+    "LOGOUT": "Abmelden"
+  },
+  "SERVER": {
+    "ADD": "Neuen Server hinzufügen",
+    "EDIT": "Server bearbeiten",
+    "TOKEN": "API Token"
+  },
+
+  "GENERIC": {
+    "ADD": "Hinzufügen",
+    "CANCEL": "Abbrechen",
+    "SAVE": "Speichern",
+    "REMOVE": "Entfernen",
+    "EDIT": "Bearbeiten",
+    "SEVERITY": "Schweregrad",
+    "RULE": "Regel",
+    "TIMESTAMP": "Zeitstempel",
+    "NAME": "Name"
+  }
+}
