@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+
 import { Observable } from "rxjs/Observable";
 import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 import { Rule } from '../model/rule';
+import { Platform } from 'ionic-angular';
+
+import { HTTP } from '@ionic-native/http';
 
 @Injectable()
 export class LibreNMS {
@@ -11,9 +15,12 @@ export class LibreNMS {
     url: string;
     token: string;
     libre_url: string;
-    options: RequestOptions;
     api_version: string = '/api/v0';
-    constructor(public http: Http, private storage: Storage) { }
+    constructor(public http: HttpClient, private storage: Storage, private platform: Platform, private nativeHttp: HTTP) {
+        this.platform.ready().then(() => {
+            this.nativeHttp.acceptAllCerts(true);
+        })
+     }
 
     /**
      * Authenticate Application
@@ -23,12 +30,14 @@ export class LibreNMS {
      */
     authenticate(url: string, token: string): Observable<any> {
         return Observable.create((observer) => {
-            this.http.get(`${url}${this.api_version}`, this.headers(token)).subscribe((response) => {
-                observer.next({ 'success': true });
-            }, (error) => {
-                observer.error(error);
-            }, () => {
-                observer.complete();
+            this.platform.ready().then(() => {
+                this.http.get(`${url}${this.api_version}`, { headers: this.headers(token) }).subscribe((response) => {
+                    observer.next({ 'success': true });
+                }, (error) => {
+                    observer.error(JSON.stringify(error));
+                }, () => {
+                    observer.complete();
+                })
             })
         });
     }
@@ -103,12 +112,12 @@ export class LibreNMS {
      * Helper method to send get request
      * @param hook URL to send get request to
      */
-    getRequest(hook: string) {
+    getRequest(hook: string, headers: Array<object> = [], contentType: string = 'application/json') {
         return Observable.create(observer => {
             this.storage.get('_session').then((session) => {
-                this.http.get(`${session.url}${session.version}${hook}`, this.headers(session.token))
+                this.http.get(`${session.url}${session.version}${hook}`, {headers: this.headers(session.token, headers, contentType) })
                     .subscribe(
-                    data => observer.next(data.json()),
+                    data => observer.next(data),
                     err => console.error(err),
                     () => observer.complete()
                     )
@@ -123,9 +132,9 @@ export class LibreNMS {
     putRequest(hook: string) {
         return Observable.create(observer => {
             this.storage.get('_session').then((session) => {
-                this.http.put(`${session.url}${session.version}${hook}`, null, this.headers(session.token))
+                this.http.put(`${session.url}${session.version}${hook}`, null, {headers: this.headers(session.token) })
                     .subscribe(
-                    data => observer.next(data.json()),
+                    data => observer.next(data),
                     err => console.error(err),
                     () => observer.complete()
                     )
@@ -141,9 +150,9 @@ export class LibreNMS {
     postRequest(hook: string, data) {
         return Observable.create(observer => {
             this.storage.get('_session').then((session) => {
-                this.http.post(`${session.url}${session.version}${hook}`, data, this.headers(session.token))
+                this.http.post(`${session.url}${session.version}${hook}`, data, {headers: this.headers(session.token) })
                     .subscribe(
-                    data => observer.next(data.json()),
+                    data => observer.next(data),
                     err => observer.error(err),
                     () => observer.complete()
                     )
@@ -156,10 +165,16 @@ export class LibreNMS {
      * Build the headers for api request
      * @param token API Token to set in headers
      */
-    private headers(token) {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        headers.append('X-Auth-Token', token);
-        return new RequestOptions({ headers: headers });
+    private headers(token, additionalHeaders: Array<object> = [], contentType:string = 'application/json') {
+        let headers = {};
+
+        additionalHeaders.forEach((item) => {
+            for (let i in item) {
+                headers[i] = item[i];
+            }
+        })
+        headers['Content-Type'] = contentType;
+        headers['X-Auth-Token'] = token;
+        return headers;
     }
 }

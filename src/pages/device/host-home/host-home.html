@@ -1,5 +1,8 @@
 <ion-content>
   <ion-card *ngIf="device">
+    <ion-item *ngIf="error.message">
+      {{error.message}}
+    </ion-item>
     <ion-item>
       <h2>{{device.sysName}}</h2>
       <p>{{device.hardware}}</p>

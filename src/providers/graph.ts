@@ -3,28 +3,23 @@ import 'rxjs/add/operator/map';
 import { LibreNMS } from './libre-nms';
 import { Observable } from "rxjs/Observable";
 import { DomSanitizer } from '@angular/platform-browser';
-
+import { ToastController } from 'ionic-angular';
 @Injectable()
 export class GraphHelper {
     width: any = window.innerWidth;
     height: any = '200';
     total_graphs: number = 4;
     current: number = 0;
-    constructor(private api: LibreNMS, public sanitizer: DomSanitizer) { }
+    constructor(private api: LibreNMS, public sanitizer: DomSanitizer, private toastCtrl: ToastController) { }
 
     get(hook: string, from: string = 'end-24h', to: string = 'now', width: number = window.innerHeight, height: number = 200) {
         return new Promise((resolve, reject) => {
-            let req = new XMLHttpRequest();
-            this.api.get_credentials().then((credentials: any) => {
-                req.open('GET', `${credentials.url}${credentials.version}/${hook}?from=${from}&to=${to}&width=${width}&height=${height}`);
-                req.setRequestHeader('X-Auth-Token', credentials.token);
-                req.responseType = "arraybuffer";
-                req.onreadystatechange = () => {
-                    if (req.readyState == 4 && req.status == 200) {
-                        resolve(this.clean_response(req.response, req));
-                    }
-                };
-                req.send();
+            this.api.getRequest(`/${hook}?from=${from}&to=${to}&width=${width}&height=${height}&output=base64`).subscribe((response: any) => {
+                console.log(response);
+                if (response == null) {
+                    reject("Your librenms install did not return any data, please make sure it is up to date");
+                }
+                resolve(this.clean_response(response.image.image, response.image['content-type']));
             })
         });
     }
@@ -55,20 +50,27 @@ export class GraphHelper {
      * Clean the response and convert to image
      * @param response 
      */
-    clean_response(data, request) {
-        let content_type = request.getResponseHeader('Content-Type');
-        let blob = null;
-        if (content_type == 'image/png') {
-            blob = new Blob([data]);
-        }
-        else {
-            blob = new Blob([data], { type: "image/svg+xml" });
-        }
+    clean_response(data, content_type) {
+        let blob = new Blob([this.base64ToArrayBuffer(data)], { type: content_type});
         return this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(blob));
     }
 
     private increment(observer) {
         this.current++;
         if (this.current >= this.total_graphs) return observer.complete();
+    }
+
+    /**
+     * https://stackoverflow.com/questions/21797299/convert-base64-string-to-arraybuffer
+     * @param base64 
+     */
+    private base64ToArrayBuffer(base64) {
+        var binary_string =  window.atob(base64);
+        var len = binary_string.length;
+        var bytes = new Uint8Array( len );
+        for (var i = 0; i < len; i++)        {
+            bytes[i] = binary_string.charCodeAt(i);
+        }
+        return bytes.buffer;
     }
 }

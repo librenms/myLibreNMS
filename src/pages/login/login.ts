@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController, MenuController, ToastController, Platform } from 'ionic-angular';
 import { LibreNMS } from '../../providers/libre-nms';
 import { Storage } from '@ionic/storage';
-
 @IonicPage({
     priority: 'high'
 })
@@ -65,7 +64,7 @@ export class Login {
             this.storage.set('_session', { 'url': item.url, 'token': item.token, 'version': '/api/v0' });
             this.navCtrl.setRoot('Dashboard');
         }, (error) => {
-            console.log(error.json());
+            console.log(JSON.stringify(error));
             if (error.status == 0) {
                 this.presentToast('Unable to reach the server.');
             }
