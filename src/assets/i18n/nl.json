@@ -8,6 +8,7 @@
   "SERVICES": "Diensten",
   "SETTINGS": "Instellingen",
   "BILLS": "Rekeningen",
+  "LOGS": "Logs",
   "STATUS": {
     "SUMMARY": "Samenvatting",
     "GOOD": "Goed",
@@ -58,7 +59,10 @@
   },
   "AUTH": {
     "LOGIN": "Log in",
-    "LOGOUT": "Log uit"
+    "LOGOUT": "Log uit",
+    "BASIC":  "Basic Auth",
+    "USERNAME": "Username",
+    "PASSWORD": "Password"
   },
   "SERVER": {
     "ADD": "Voeg een server toe",
