@@ -7,7 +7,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { IonicStorageModule } from '@ionic/storage'
-import { LocalNotifications } from '@ionic-native/local-notifications';
 
 //Providers
 import { LibreNMS } from "../providers/libre-nms";
@@ -75,9 +74,8 @@ export function createTranslateLoader(http: HttpClient) {
         GlobalAlertProvider,
         BarcodeScanner,
         ScreenOrientation,
-        StatusBar,
-        LocalNotifications,
         Globalization,
+        StatusBar,
         CustomValidation
     ]
 })
