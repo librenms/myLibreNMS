@@ -59,18 +59,13 @@ export class Login {
     }
 
     login(item) {
-        this.api.authenticate(item.url, item.token).subscribe((data) => {
-            this.menu.enable(true);
-            this.storage.set('_session', { 'url': item.url, 'token': item.token, 'version': '/api/v0' });
-            this.navCtrl.setRoot('Dashboard');
+        this.api.authenticate(item.url, item.token, item.basic).subscribe((data) => {
+                this.menu.enable(true);
+                this.storage.set('_session', { 'url': item.url, 'token': item.token, 'version': '/api/v0', 'basic': item.basic });
+                this.navCtrl.setRoot('Dashboard');
         }, (error) => {
-            console.log(JSON.stringify(error));
-            if (error.status == 0) {
-                this.presentToast('Unable to reach the server.');
-            }
-            else {
-                this.presentToast((error.status ? error.status : '') + ':' + (error.statusText ? error.statusText : '') + "\n" + error.json().message);
-            }
+            error = JSON.parse(error);
+            this.presentToast((error.status ? error.status : '') + ':' + (error.message ? error.message : ''));
         });
     }
 

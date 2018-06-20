@@ -28,11 +28,18 @@ export class LibreNMS {
      * @param token API Token
      * @return Observable Object
      */
-    authenticate(url: string, token: string): Observable<any> {
+    authenticate(url: string, token: string, basic: any = {enabled: false}): Observable<any> {
         return Observable.create((observer) => {
             this.platform.ready().then(() => {
-                this.http.get(`${url}${this.api_version}`, { headers: this.headers(token) }).subscribe((response) => {
-                    observer.next({ 'success': true });
+                if (basic.enabled) this.nativeHttp.useBasicAuth(basic.username, basic.password);
+
+                this.http.get(`${url}${this.api_version}`, { headers: this.headers(token) }).subscribe((response: any) => {
+                    if (response.status == "error") {
+                        observer.error(JSON.stringify(response));
+                    }
+                    else {
+                        observer.next({ 'success': true });
+                    }
                 }, (error) => {
                     observer.error(JSON.stringify(error));
                 }, () => {
@@ -47,6 +54,7 @@ export class LibreNMS {
      */
     logout(): boolean {
         this.storage.set('_session', { 'url': null, 'token': null });
+        this.nativeHttp.useBasicAuth('','');
         return true;
     }
 
