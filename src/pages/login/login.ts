@@ -11,7 +11,7 @@ import { Storage } from '@ionic/storage';
 })
 
 export class Login {
-    public items: Array<{ token: string, url: string, name: any }> = [];
+    public items: Array<{ token: string, url: string, name: any, basic: any }> = [];
     modal: any;
     keys: any;
     temp_item: any;
@@ -36,7 +36,8 @@ export class Login {
                     this.items.push({
                         token: server.token,
                         url: server.url,
-                        name: server.name
+                        name: server.name,
+                        basic: server.basic
                     });
                 })
             })
@@ -44,7 +45,6 @@ export class Login {
     }
 
     openModal(modalTemplate, data = null) {
-        console.log(data);
         if (modalTemplate == 0) {
             this.modal = this.modalCtrl.create('new-server');
         }

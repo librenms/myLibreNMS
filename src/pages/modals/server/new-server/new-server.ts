@@ -28,7 +28,12 @@ export class NewServer {
         this.newServer = this.fb.group({
             api: [this.my_token, Validators.required],
             url: ['', Validators.required],
-            name: ['', Validators.required, validator.nameExists.bind(validator)]
+            name: ['', Validators.required, validator.nameExists.bind(validator)],
+            basic: this.fb.group({
+                enabled: false,
+                username: '',
+                password: ''
+            })
         });
     }
     save() {
@@ -44,7 +49,12 @@ export class NewServer {
                 this.newServer.value.url = this.newServer.value.url.substring(0, this.newServer.value.url.length - 1);
             }
 
-            servers.push({ 'name': this.newServer.value.name.trim(), 'url': this.newServer.value.url.trim(), 'token': this.newServer.value.api.trim() });
+            servers.push({ 
+                'name': this.newServer.value.name.trim(), 
+                'url': this.newServer.value.url.trim(), 
+                'token': this.newServer.value.api.trim(),
+                'basic': this.newServer.value.basic
+            });
 
             this.storage.set('servers', servers);
             this.dismiss();
