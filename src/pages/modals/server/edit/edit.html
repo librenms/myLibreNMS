@@ -30,20 +30,22 @@
         <ion-input formControlName="url" type="text" placeholder="https://mylibrenms.server"></ion-input>
       </ion-item>
 
-      <!--       <ion-item>
-        <ion-label>Basic Auth</ion-label>
-        <ion-checkbox formControlName="basic"></ion-checkbox>
-      </ion-item>
+      <div formGroupName="basic">
+        <ion-item>
+          <ion-label>{{ 'AUTH.BASIC' | translate }}</ion-label>
+          <ion-checkbox formControlName="enabled"></ion-checkbox>
+        </ion-item>
+      
+        <ion-item *ngIf="newServer.value.basic.enabled">
+          <ion-label stacked>{{ 'AUTH.USERNAME' | translate }}</ion-label>
+          <ion-input formControlName="username" type="text"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="newServer.value.basic.enabled">
+          <ion-label stacked>{{ 'AUTH.PASSWORD' | translate }}</ion-label>
+          <ion-input formControlName="password" type="text"></ion-input>
+        </ion-item>
+      </div>
 
-      <ion-item *ngIf="newServer.value.basic">
-        <ion-label stacked>Name</ion-label>
-        <ion-input formControlName="user" type="text" placeholder="user"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="newServer.value.basic">
-        <ion-label stacked>Name</ion-label>
-        <ion-input formControlName="pass" type="text" placeholder="password"></ion-input>
-      </ion-item>
- -->
       <button ion-button full type="submit" [disabled]="!newServer.valid" color="favorite">{{ 'GENERIC.SAVE' | translate }}</button>
 
     </ion-list>
