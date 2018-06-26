@@ -39,7 +39,8 @@ export class Dashboard {
         this.ignore = 0;
         this.api.get_credentials().then((credentials: any) => {
             this.url = credentials.url;
-        })
+        });
+        this.checkVersion();
     }
     refresh() {
         this.bad = [];
@@ -72,6 +73,18 @@ export class Dashboard {
         this.navCtrl.push('host', {
             item: item,
             id: item.device_id
+        });
+    }
+
+    checkVersion() {
+        this.api.getRequest('/system').subscribe((response) => {
+            if (response.status == 'error') {
+                let warning = this.toastCtrl.create({
+                    message: "Your LibreNMS server may be out of date, this could cause the application to crash. Be warned",
+                    duration: 5000
+                });
+                warning.present();
+            }
         });
     }
 }

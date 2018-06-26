@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpModule, Http } from '@angular/http';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { IonicApp, IonicModule } from 'ionic-angular';
+import { HttpClient, HttpClientModule, HttpBackend, HttpXhrBackend } from '@angular/common/http';
+import { IonicApp, IonicModule, Platform } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { IonicStorageModule } from '@ionic/storage'
 
@@ -19,7 +18,9 @@ import { LogProvider } from "../providers/device/log-provider";
 import { GlobalBillProvider } from "../providers/bill-provider";
 import { GlobalAlertProvider } from "../providers/alert-provider";
 
+
 //Native
+import { NativeHttpModule, NativeHttpBackend, NativeHttpFallback } from 'ionic-native-http-connection-backend';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
@@ -38,9 +39,9 @@ export function createTranslateLoader(http: HttpClient) {
     ],
     imports: [
         BrowserModule,
-        HttpModule,
         IonicImageViewerModule,
         HttpClientModule,
+        NativeHttpModule,
         IonicStorageModule.forRoot(),
         IonicModule.forRoot(MyApp, {
             platforms: {
@@ -74,9 +75,10 @@ export function createTranslateLoader(http: HttpClient) {
         GlobalAlertProvider,
         BarcodeScanner,
         ScreenOrientation,
-        Globalization,
-        StatusBar,
-        CustomValidation
+        StatusBar,        
+        CustomValidation,
+        {provide: HttpBackend, useClass: NativeHttpFallback, deps: [Platform, NativeHttpBackend, HttpXhrBackend]},
+        Globalization
     ]
 })
 
