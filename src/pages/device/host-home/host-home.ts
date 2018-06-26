@@ -18,6 +18,9 @@ export class HostHome {
     traffic_graph: any;
     loading: boolean = true;
     device: Device = null;
+    error: object = {
+        message: null
+    };
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
         private api: LibreNMS,
@@ -34,6 +37,9 @@ export class HostHome {
         this.graphHlpr.get(`devices/${this.id}/device_bits`, 'end-24h', 'now', this.width, 200).then((data: any) => {
             this.traffic_graph = data;
             this.loading = false;
+        })
+        .catch( (message) => {
+            this.error['message'] = message;
         });
     }
     launch(ip) {

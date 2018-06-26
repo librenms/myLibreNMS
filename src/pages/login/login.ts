@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController, MenuController, ToastController, Platform } from 'ionic-angular';
 import { LibreNMS } from '../../providers/libre-nms';
 import { Storage } from '@ionic/storage';
-
 @IonicPage({
     priority: 'high'
 })
@@ -12,7 +11,7 @@ import { Storage } from '@ionic/storage';
 })
 
 export class Login {
-    public items: Array<{ token: string, url: string, name: any }> = [];
+    public items: Array<{ token: string, url: string, name: any, basic: any }> = [];
     modal: any;
     keys: any;
     temp_item: any;
@@ -37,7 +36,8 @@ export class Login {
                     this.items.push({
                         token: server.token,
                         url: server.url,
-                        name: server.name
+                        name: server.name,
+                        basic: server.basic
                     });
                 })
             })
@@ -45,7 +45,6 @@ export class Login {
     }
 
     openModal(modalTemplate, data = null) {
-        console.log(data);
         if (modalTemplate == 0) {
             this.modal = this.modalCtrl.create('new-server');
         }
@@ -60,18 +59,13 @@ export class Login {
     }
 
     login(item) {
-        this.api.authenticate(item.url, item.token).subscribe((data) => {
-            this.menu.enable(true);
-            this.storage.set('_session', { 'url': item.url, 'token': item.token, 'version': '/api/v0' });
-            this.navCtrl.setRoot('Dashboard');
+        this.api.authenticate(item.url, item.token, item.basic).subscribe((data) => {
+                this.menu.enable(true);
+                this.storage.set('_session', { 'url': item.url, 'token': item.token, 'version': '/api/v0', 'basic': item.basic });
+                this.navCtrl.setRoot('Dashboard');
         }, (error) => {
-            console.log(JSON.stringify(error.json()));
-            if (error.status == 0) {
-                this.presentToast('Unable to reach the server.');
-            }
-            else {
-                this.presentToast((error.status ? error.status : '') + ':' + (error.statusText ? error.statusText : '') + "\n" + error.json().message);
-            }
+            error = JSON.parse(error);
+            this.presentToast((error.status ? error.status : '') + ':' + (error.message ? error.message : ''));
         });
     }
 

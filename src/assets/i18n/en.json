@@ -8,6 +8,7 @@
   "SERVICES": "Services",
   "SETTINGS": "Settings",
   "BILLS": "Bills",
+  "LOGS": "Logs",
   "STATUS": {
     "SUMMARY": "Summary",
     "GOOD": "Good",
@@ -58,7 +59,10 @@
   },
   "AUTH": {
     "LOGIN": "Login",
-    "LOGOUT": "Logout"
+    "LOGOUT": "Logout",
+    "BASIC":  "Basic Auth",
+    "USERNAME": "Username",
+    "PASSWORD": "Password"
   },
   "SERVER": {
     "ADD": "Add a new Server",
