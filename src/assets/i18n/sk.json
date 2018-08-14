@@ -1,0 +1,80 @@
+{
+  "MENU": "Menu",
+  "DASHBOARD": "Hlavný panel",
+  "DEVICES": "Zariadenia",
+  "GROUPS": "Skupiny",
+  "GROUP": "Skupina",
+  "ALERTS": "Výstrahy",
+  "SERVICES": "Služby",
+  "SETTINGS": "Nastavenia",
+  "BILLS": "Účty",
+  "STATUS": {
+    "SUMMARY": "Súhrn",
+    "GOOD": "UP",
+    "BAD": "ZLÉ",
+    "DOWN": "DONW",
+    "IGNORED": "Ignorované",
+    "DISABLED": "Blokované",
+    "DEVICES": "Zariadenia ktoré sú DOWN",
+    "TOTAL": "Spolu"
+  },
+  "TIMEFRAME": {
+    "DAY": "24 Hodín",
+    "WEEK": "Týždeň",
+    "MONTH": "Mesiac",
+    "YEAR": "Rok"
+  },
+  "SNMP": {
+    "COMMUNITY": "Komunita",
+    "TRANSPORT": "Transport",
+    "PORT": "Port",
+    "VERSION": "Verzia",
+    "HOSTNAME": "Hostname"
+  },
+  "DEVICE": {
+    "TABS": {
+      "OVERVIEW": "Prehľad",
+      "HEALTH": "Zdravie",
+      "GRAPHS": "Grafy",
+      "PORTS": "Porty",
+      "WIRELESS": "Wifi"
+    },
+    "NOTES": "Poznámky",
+    "MORE": "Viac"
+  },
+  "MODAL": {
+    "DEVICE": {
+      "NEW": "Pridaj nove zariadenie"
+    },
+    "SERVICE": {
+      "TYPE": "Typ",
+      "DESC": "Popis",
+      "IGNORE": "Ignorované",
+      "STATUS": "Status",
+      "CHANGED": "Zmenená",
+      "MESSAGE": "Správa",
+      "DISABLED": "Blokovaná"
+    }
+  },
+  "AUTH": {
+    "LOGIN": "Prihlásenie",
+    "LOGOUT": "Odhlásenie"
+  },
+  "SERVER": {
+    "ADD": "Pridaj nový Server",
+    "EDIT": "Uprav Server",
+    "TOKEN": "API Token"
+  },
+
+  "GENERIC": {
+    "ADD": "Pridať",
+    "CANCEL": "Zrušiť",
+    "SAVE": "Uložiť",
+    "REMOVE": "Odstráňiť",
+    "EDIT": "Upravit",
+    "SEVERITY": "Vážnosť",
+    "RULE": "Pravidlo",
+    "TIMESTAMP": "Časová známka",
+    "NAME": "Meno"
+  }
+}
