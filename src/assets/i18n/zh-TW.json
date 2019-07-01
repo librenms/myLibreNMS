@@ -1,0 +1,84 @@
+{
+  "MENU": "選單",
+  "DASHBOARD": "資訊看板",
+  "DEVICES": "裝置",
+  "GROUPS": "群組",
+  "GROUP": "群組",
+  "ALERTS": "警報",
+  "SERVICES": "服務",
+  "SETTINGS": "設定",
+  "BILLS": "帳單",
+  "LOGS": "記錄",
+  "STATUS": {
+    "SUMMARY": "摘要",
+    "GOOD": "良好",
+    "BAD": "差",
+    "DOWN": "離線",
+    "IGNORED": "已忽略",
+    "DISABLED": "已取消",
+    "DEVICES": "離線裝置",
+    "TOTAL": "總計"
+  },
+  "TIMEFRAME": {
+    "DAY": "24 小時",
+    "WEEK": "週",
+    "MONTH": "月",
+    "YEAR": "年"
+  },
+  "SNMP": {
+    "COMMUNITY": "Community",
+    "TRANSPORT": "傳送",
+    "PORT": "連接埠",
+    "VERSION": "版本",
+    "HOSTNAME": "主機名稱"
+  },
+  "DEVICE": {
+    "TABS": {
+      "OVERVIEW": "概觀",
+      "HEALTH": "健康情況",
+      "GRAPHS": "圖表",
+      "PORTS": "連接埠",
+      "WIRELESS": "無線"
+    },
+    "NOTES": "附註",
+    "MORE": "更多"
+  },
+  "MODAL": {
+    "DEVICE": {
+      "NEW": "新增裝置"
+    },
+    "SERVICE": {
+      "TYPE": "類型",
+      "DESC": "說明",
+      "IGNORE": "忽略",
+      "STATUS": "狀態",
+      "CHANGED": "已變更",
+      "MESSAGE": "訊息",
+      "DISABLED": "已取消"
+    }
+  },
+  "AUTH": {
+    "LOGIN": "登入",
+    "LOGOUT": "登出",
+    "BASIC":  "基本驗證",
+    "USERNAME": "帳號",
+    "PASSWORD": "密碼"
+  },
+  "SERVER": {
+    "ADD": "新增伺服器",
+    "EDIT": "編輯伺服器",
+    "TOKEN": "API 權杖"
+  },
+
+  "GENERIC": {
+    "ADD": "Add",
+    "CANCEL": "取消",
+    "SAVE": "儲存",
+    "REMOVE": "移除",
+    "EDIT": "編輯",
+    "SEVERITY": "嚴重程度",
+    "RULE": "規格",
+    "TIMESTAMP": "時間戳記",
+    "NAME": "名稱"
+  }
+}
